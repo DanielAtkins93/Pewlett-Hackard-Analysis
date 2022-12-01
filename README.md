@@ -29,11 +29,11 @@ The below query provides insight into the payroll information of these potential
 
 ```
 SELECT unique_titles.emp_no,
-	   dept_manager.emp_no,
-	   dept_manager.dept_no
-FROM dept_manager
-LEFT JOIN unique_titles
-ON unique_titles.emp_no = dept_manager.emp_no
+	   salaries.emp_no,
+	   salaries.salary
+FROM salaries
+RIGHT JOIN unique_titles
+ON unique_titles.emp_no = salaries.emp_no
 ```
 
 ### Suggestion #2
