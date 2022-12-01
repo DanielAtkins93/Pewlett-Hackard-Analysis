@@ -2,11 +2,11 @@
 
 -- Create the retirement_titles.csv table
 SELECT employees.emp_no, 
-	   employees.first_name, 
+       employees.first_name, 
        employees.last_name,
-	   titles.title,
-	   titles.from_date,
-	   titles.to_date
+       titles.title,
+       titles.from_date,
+       titles.to_date
 INTO retirement_titles
 FROM titles
 LEFT JOIN employees
@@ -16,9 +16,9 @@ ORDER BY emp_no
 
 -- Create the unique_titles.csv table
 SELECT DISTINCT ON (emp_no) emp_no,
-							first_name,
-							last_name,
-							title
+			    first_name,
+			    last_name,
+			    title
 INTO unique_titles
 FROM retirement_titles
 WHERE to_date = '9999-01-01'
@@ -29,12 +29,12 @@ ORDER BY emp_no, to_date DESC;
 
 -- Create the mentorship_eligibility.csv table
 SELECT DISTINCT ON (emp_no) employees.emp_no, 
-	   						employees.first_name, 
-	   						employees.last_name, 
-	   						employees.birth_date,
-	   						dept_emp.from_date,
-	   						dept_emp.to_date,
-	   						titles.title
+	   		    employees.first_name, 
+	   		    employees.last_name, 
+	   		    employees.birth_date,
+	   		    dept_emp.from_date,
+	   		    dept_emp.to_date,
+	   		    titles.title
 INTO mentorship_eligibility
 FROM employees
 INNER JOIN titles
